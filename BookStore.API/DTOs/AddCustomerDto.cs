@@ -9,7 +9,6 @@ namespace BookStore.API.DTOs
         [Required]
         //[RegularExpression("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/", ErrorMessage = "Invalid Password")]
         public string Password { get; set; }
-        //[RegularExpression("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")]
         public string Email { get; set; }
         public string Address { get; set; }
         public string FullName { get; set; }
