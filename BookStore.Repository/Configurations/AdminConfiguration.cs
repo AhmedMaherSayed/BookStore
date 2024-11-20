@@ -10,8 +10,8 @@ namespace BookStore.Repository.Configurations
         public void Configure(EntityTypeBuilder<IdentityRole> builder)
         {
             builder.HasData(
-                new IdentityRole { Name = "Admin"},
-                new IdentityRole { Name = "Customer"}
+                new IdentityRole { Name = "Admin", NormalizedName = "Admin".ToUpper()},
+                new IdentityRole { Name = "Customer", NormalizedName = "Customer".ToUpper()}
                 );
         }
     }

@@ -24,10 +24,7 @@ namespace BookStore.Repository
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            //builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-            
-            
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Author> Authors { get; set; }

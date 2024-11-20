@@ -1,4 +1,5 @@
-﻿using BookStore.API.DTOs;
+﻿using AutoMapper;
+using BookStore.API.DTOs;
 using BookStore.Core.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -12,25 +13,27 @@ namespace BookStore.API.Controllers
     {
         private readonly UserManager<IdentityUser> _userManger;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IMapper _mapper;
 
-        public CustomerController(UserManager<IdentityUser> userManger, RoleManager<IdentityRole> roleManager)
+        public CustomerController(UserManager<IdentityUser> userManger, RoleManager<IdentityRole> roleManager, IMapper mapper)
         {
             _userManger = userManger;
             _roleManager = roleManager;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(AddCustomerDto dto)
         {
-            var customer = new Customer
-            {
-                Email = dto.Email,
-                Address = dto.Address,
-                UserName = dto.Username,
-                FullName = dto.FullName,
-                PhoneNumber = dto.PhoneNumber,
-            };
-
+            //var customer = new Customer
+            //{
+            //    Email = dto.Email,
+            //    Address = dto.Address,
+            //    UserName = dto.Username,
+            //    FullName = dto.FullName,
+            //    PhoneNumber = dto.PhoneNumber,
+            //};
+            var customer = _mapper.Map<Customer>(dto);
             var r = await _userManger.CreateAsync(customer, dto.Password);
             if(r.Succeeded)
             {

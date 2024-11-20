@@ -8,7 +8,8 @@ namespace BookStore.API.Helpers
     {
         public MappingProfile()
         {
-            CreateMap<Customer, AddCustomerDto>().ReverseMap();
+            CreateMap<Customer, AddCustomerDto>()
+                .ReverseMap();
         }
     }
 }
