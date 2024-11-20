@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BookStore.Core.Models;
+using BookStore.Core.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,7 @@ namespace BookStore.Core
 {
     public interface IUnitOfWork : IAsyncDisposable
     {
-        int SaveChangesAsync();
+        public IGenericRepository<TEntity, TKey>? Repository<TEntity, TKey>() where TEntity : BaseEntity<TKey>;
+        public Task<int> SaveChangesAsync();
     }
 }

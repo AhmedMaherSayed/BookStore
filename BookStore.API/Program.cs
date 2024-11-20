@@ -1,4 +1,5 @@
 
+using BookStore.API.Extensions;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +19,14 @@ namespace BookStore.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<BookStoreDbContext>(options => 
+            builder.Services.AddDbContext<BookStoreDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
             );
 
             builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<BookStoreDbContext>();
+
+            builder.Services.AddApplicationServices();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
