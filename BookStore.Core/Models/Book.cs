@@ -19,10 +19,10 @@ namespace BookStore.Core.Models
         public DateOnly PublishedDate { get; set; }
 
         public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
 
         public int? CatalogId { get; set; }
-        public Catalog? Catalog { get; set; }
+        public virtual Catalog? Catalog { get; set; }
         public virtual ICollection<OrderDetails> OrderDetailsList { get; set; } = new List<OrderDetails>();
     }
 }

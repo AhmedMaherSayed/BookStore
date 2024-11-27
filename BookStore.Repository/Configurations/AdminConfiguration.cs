@@ -11,7 +11,7 @@ namespace BookStore.Repository.Configurations
         {
             builder.HasData(
                 new IdentityRole { Name = "Admin", NormalizedName = "Admin".ToUpper()},
-                new IdentityRole { Name = "Customer", NormalizedName = "Customer".ToUpper()}
+                new IdentityRole { Name = "Customer", NormalizedName = "Cu stomer".ToUpper()}
                 );
         }
     }

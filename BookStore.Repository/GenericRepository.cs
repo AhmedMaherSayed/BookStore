@@ -21,14 +21,20 @@ namespace BookStore.Repository
         public async Task<IEnumerable<TEntity>> GetAllAsync(bool changeTrack = true)
         {
             if (changeTrack)
-                return await _context.Set<TEntity>().ToListAsync();
+                return await _context.Set<TEntity>()
+                    .Where(e => !e.IsDeleted)
+                    .ToListAsync();
 
-            return await _context.Set<TEntity>().AsNoTracking().ToListAsync();
+            return await _context.Set<TEntity>()
+                .AsNoTracking()
+                .Where(e => !e.IsDeleted)
+                .ToListAsync();
 
         }
 
         public async Task<TEntity> GetByIdAsync(TKey id)
-            => await _context.Set<TEntity>().FindAsync(id);
+            => await _context.Set<TEntity>()
+            .FirstOrDefaultAsync(e => !e.IsDeleted && e.Id.Equals(id));
 
         public async Task AddAsync(TEntity entity)
             => await _context.Set<TEntity>().AddAsync(entity);
@@ -57,7 +63,8 @@ namespace BookStore.Repository
 
 
         public async void HardDelete(TEntity entity)
-            => _context.Set<TEntity>().Remove(entity);
+            => _context.Set<TEntity>()
+                .Remove(entity);
 
         public async Task HardDelete(TKey id)
         {

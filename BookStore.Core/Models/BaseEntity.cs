@@ -10,6 +10,7 @@ namespace BookStore.Core.Models
     {
         public TKey Id { get; set; }
         public bool IsDeleted { get; set; }
+        //public DateTime? DeletedAt { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedAt { get; set; }
         public int? ModifiedBy { get; set; }

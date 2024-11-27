@@ -23,6 +23,7 @@ namespace BookStore.Repository
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //builder.Entity<BaseEntity<int>>().HasQueryFilter(e => !e.IsDeleted);
             base.OnModelCreating(builder);
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }

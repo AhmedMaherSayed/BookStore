@@ -61,7 +61,7 @@ namespace BookStore.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Core.Models.Book", b =>
@@ -113,7 +113,7 @@ namespace BookStore.Repository.Migrations
 
                     b.HasIndex("CatalogId");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Core.Models.Catalog", b =>
@@ -150,7 +150,7 @@ namespace BookStore.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Catalogs");
+                    b.ToTable("Catalogs", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Core.Models.Order", b =>
@@ -192,7 +192,7 @@ namespace BookStore.Repository.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("BookStore.Core.Models.OrderDetails", b =>
@@ -236,7 +236,7 @@ namespace BookStore.Repository.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
